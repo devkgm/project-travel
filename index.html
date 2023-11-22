@@ -83,17 +83,57 @@
         }
 
         .modalContent {
+            display: none;
             position: absolute;
             background-color: white;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 70%;
-            min-height: 80%;
+            width: 80%;
+            min-width: 800px;
+            max-width: 950px;
+            height: 550px;
         }
+        .modalContainer ul {
+            margin: 0px;
+            list-style-type: none;
+            padding: 0px;
+            width: 100%;
+        }
+        .modalContainer li {
+
+        }
+        .modalContainer .imageBox {
+            display: inline-flex;
+            background-color: rgb(22, 22, 22);
+            width: 100%;
+            height: 550px;
+            min-width: 412px;
+            max-width: 550px;
+            align-items: center;
+            justify-content: center;
+        }
+        .modalContent img {
+            display: none;
+            width: 100%;
+            height: auto;
+            max-height: 550px;
+            margin: auto;
+            object-fit: contain;
+            margin-top: 4px;
+        }
+        .modalContainer .descriptionBox {
+            display: inline-block;
+            min-width: 400px;
+            width: 400px;
+        }
+        
 
         footer {
             height: 200px;
+        }
+        img.display {
+            display: inline-block;
         }
     </style>
 </head>
@@ -104,8 +144,9 @@
     </header>
     <nav></nav>
     <section>
-        <div class="itemContainer">
-            <div class="itemCard">
+        <div id="itemContainer" class="itemContainer">
+            <!-- 아래 해당하는 데이터가 DOM 로드시 스크립트로 입력됩니다. -->
+            <!-- <div class="itemCard">
                 <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
                     <div class="image">
                         <div class="hover">
@@ -114,76 +155,149 @@
                         <img src="/images/img1.jpeg" alt="image">
                     </div>
                 </a>
-            </div>
-            <div class="itemCard">
-                <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
-                    <div class="image">
-                        <div class="hover">
-                            <span class="location">대만</span>
-                        </div>
-                        <img src="/images/img1.jpeg" alt="image">
-                    </div>
-                </a>
-            </div>
-            <div class="itemCard">
-                <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
-                    <div class="image">
-                        <div class="hover">
-                            <span class="location">대만</span>
-                        </div>
-                        <img src="/images/img1.jpeg" alt="image">
-                    </div>
-                </a>
-            </div>
-            <div class="itemCard">
-                <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
-                    <div class="image">
-                        <div class="hover">
-                            <span class="location">대만</span>
-                        </div>
-                        <img src="/images/img1.jpeg" alt="image">
-                    </div>
-                </a>
-            </div>
-            <div class="itemCard">
-                <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
-                    <div class="image">
-                        <div class="hover">
-                            <span class="location">대만</span>
-                        </div>
-                        <img src="/images/img1.jpeg" alt="image">
-                    </div>
-                </a>
-            </div>
-            <div class="itemCard">
-                <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
-                    <div class="image">
-                        <div class="hover">
-                            <span class="location">대만</span>
-                        </div>
-                        <img src="/images/img1.jpeg" alt="image">
-                    </div>
-                </a>
-            </div>
+            </div> -->
     </section>
     <footer></footer>
     <div class="modalContainer" id="modalContainer">
-        <div class="modalContent" id="modal_item1">
+        <!-- <div class="modalContent" id="modal_item1">
             <div class="imageBox"></div>
             <div class="descriptionBox"></div>
-        </div>
+        </div> -->
     </div>
     <script>
+        const contents = [
+            {
+                thumnail : "https://i.pravatar.cc/300?img=2",
+                images : ["https://i.pravatar.cc/300?img=2​","https://i.pravatar.cc/300?img=1"],
+                location : "대만",
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                date : "2023-10-22",
+            },
+            {
+                thumnail : "https://i.pravatar.cc/300?img=2",
+                images : ["https://i.pravatar.cc/300?img=2​"],
+                location : "대만",
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                date : "2023-10-22",
+            },
+            {
+                thumnail : "https://i.pravatar.cc/300?img=2",
+                images : ["https://i.pravatar.cc/300?img=2​"],
+                location : "대만",
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                date : "2023-10-22",
+            },
+            {
+                thumnail : "https://i.pravatar.cc/300?img=2",
+                images : ["https://i.pravatar.cc/300?img=2​"],
+                location : "대만",
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                date : "2023-10-22",
+            },
+        
+        ]
+        let selectedItem
         const modalContainer = document.getElementById("modalContainer");
         function callFunction(e) {
             const modalContainer = document.getElementById("modalContainer");
-            modalContainer.style.display = "block"
+            const index = e.getAttribute("index")
+
+            const modalContent = document.getElementById("modal_item"+index);
+            selectedItem = index
+            modalContent.style.display = "flex"
+            modalContainer.style.display = "block";
         }
         window.addEventListener("click", (event) => {
+
             if (event.target === modalContainer) {
                 modalContainer.style.display = "none";
+                const modalContent = document.getElementById("modal_item"+selectedItem);
+                modalContent.style.display = "none"
             }
         });
+        document.addEventListener("DOMContentLoaded", () => {
+            const itemContainer = document.getElementById("itemContainer");
+            const modalContainer = document.getElementById("modalContainer")
+            contents.map((content, index) => {
+                itemContainer.innerHTML += `
+                <div class="itemCard">
+                    <a href="javascript:void(0)" onclick="callFunction(this);" id="item${index}" index="${index}"">
+                        <div class="image">
+                            <div class="hover">
+                                <span class="location">${content.location}</span>
+                            </div>
+                            <img src="${content.thumnail}" alt="thumnail">
+                        </div>
+                    </a>
+                </div>
+                `
+                const imageHTMLarr = content.images.map((image, index) => {
+                    if(index == 0){
+                        return `<li><img class="display" src="${image}" alt="image"></li>`  
+                    }
+                    return `<li><img src="${image}" alt="image"></li>`    
+                })
+                const imageHTML = imageHTMLarr.join('')
+                modalContainer.innerHTML += `
+                <div class="modalContent" id="modal_item${index}">
+                    <div class="imageBox">
+                        <ul class="imgList">
+                            <div class="arrow" onclick="handleBullet(event, 'right');" index="${index}">
+                                >
+                            </div>
+                            ${imageHTML}                    
+                        </ul>
+                    </div>
+                    <div class="descriptionBox">
+                            <span>${content.description}<span>
+                    </div>
+                </div>
+                `
+            })
+        })
+        function handleBullet(e, dir) {
+            const element = e.target
+            const index = element.getAttribute("index")
+            const images = document.querySelectorAll("#modal_item" + index + " img")
+            if(dir == "right"){
+                handleRight(images)
+            } else {
+                handleLeft(images)
+            }
+            
+        }
+        function getImageIndex(images) {
+            let index
+            images.forEach((element,idx) => {
+                if(element.classList.contains("display")) {
+                    return index = idx;
+                }
+            });
+            return index;
+        }
+        function handleLeft(images) {
+            let index = getImageIndex(images)
+            if(index == 0) {
+                return;
+            }
+            index--;
+            images[index].classList.add("display");
+            images[index+1].classList.remove("display")
+        }
+        function handleRight(images) {
+            let index = getImageIndex(images)
+            if(index == images.length) {
+                return;
+            }
+            
+
+            index++;
+            images[index].classList.add("display")
+            images[index-1].classList.remove("display")
+        }
+
+            
+        
     </script>
 </body>
 
