@@ -151,6 +151,7 @@
         }
         .modalContainer .descriptionBox {
             display: inline-block;
+            padding: 10px;
             min-width: 400px;
             width: 400px;
         }
@@ -320,7 +321,7 @@
         }
         function handleRight(images) {
             let index = getImageIndex(images)
-            if(index == images.length) {
+            if(index == images.length-1) {
                 return;
             }
             
