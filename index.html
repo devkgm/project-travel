@@ -83,86 +83,85 @@
         }
 
         .modalContent {
+            /* display:flex */
             display: none;
-            position: absolute;
+            position:absolute;
             background-color: white;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             width: 80%;
-            min-width: 800px;
-            max-width: 950px;
-            height: 550px;
+            min-width: fit-content;
+            max-width: 1200px;
+            height: 90%;
+            max-height: 600px;
+            top:50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
-        .modalContainer ul {
-            margin: 0px;
-            list-style-type: none;
-            padding: 0px;
-            width: 100%;
+        .modalContent .imageBox {
+            flex-grow: 1;
+            position: relative;
         }
-        .modalContainer li {
-
-        }
-        .modalContent .arrowBox {
+        .imageBox .arrowBox {
+            display: flex;
             position: absolute;
             z-index: 555;
             width: 100%;
+            height: 100%;
+            align-items: center;
         }
-        .modalContent .arrowBox .arrow {
+        .imageBox .arrowBox .arrow {
             text-align: center;
             color: rgb(140, 140, 140);
             background-color: aliceblue;
             width: 30px;
             height: 30px;
-            /* padding: 10px; */
             border-radius: 100%;
             line-height: 30px;
         }
-        .modalContent .arrowBox .arrow:hover {
+        .imageBox .arrowBox .arrow:hover {
             cursor: pointer;
         }
-        .modalContent .arrowBox .left {
+        .imageBox .arrowBox .left {
             position: absolute;
             left: 10px;
         }
-        .modalContent .arrowBox .right {
+        .imageBox .arrowBox .right {
             position: absolute;
             right: 10px;
         }
-        .modalContainer .imageBox {
-            position: relative;
-            display: inline-flex;
-            background-color: rgb(22, 22, 22);
+       
+        .imageBox ul {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
             width: 100%;
-            height: 550px;
-            min-width: 412px;
-            max-width: 550px;
+            height: 100%;
+        }
+        .imageBox li {
+            display: none;
+            width: 100%;
+            height: 100%;
             align-items: center;
             justify-content: center;
         }
-        .modalContent img {
-            display: none;
+        .imageBox img {
             width: 100%;
+            min-width: 350px;
             height: auto;
-            max-height: 550px;
-            margin: auto;
+            max-height: 100%;
             object-fit: contain;
-            margin-top: 4px;
+        }
+        .imageBox li.display {
+            display: inline-flex;
         }
         .modalContainer .descriptionBox {
-            display: inline-block;
-            padding: 10px;
-            min-width: 400px;
-            width: 400px;
+            width: 500px;
         }
         
 
         footer {
             height: 200px;
         }
-        img.display {
-            display: inline-block;
-        }
+        
     </style>
 </head>
 
@@ -170,7 +169,13 @@
     <header>
         <h1>Travel</h1>
     </header>
-    <nav></nav>
+    <nav>
+        <ol>
+            <li>국내</li>
+            <li>해외</li>
+            <li>글쓰기</li>
+        </ol>
+    </nav>
     <section>
         <div id="itemContainer" class="itemContainer">
             <!-- 아래 해당하는 데이터가 DOM 로드시 스크립트로 입력됩니다. -->
@@ -261,7 +266,7 @@
                 `
                 const imageHTMLarr = content.images.map((image, index) => {
                     if(index == 0){
-                        return `<li><img class="display" src="${image}" alt="image"></li>`  
+                        return `<li class="display"><img src="${image}" alt="image"></li>`  
                     }
                     return `<li><img src="${image}" alt="image"></li>`    
                 })
@@ -293,7 +298,7 @@
         function handleBullet(e, dir) {
             const element = e.target
             const index = element.getAttribute("index")
-            const images = document.querySelectorAll("#modal_item" + index + " img")
+            const images = document.querySelectorAll("#modal_item" + index + " li")
             if(dir == "right"){
                 handleRight(images)
             } else {
