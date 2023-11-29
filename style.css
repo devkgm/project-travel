@@ -196,33 +196,62 @@ section .itemCard img {
     position: absolute;
     left: 10px;
 }
+.imageBox .arrowBox .left.disable {
+    display: none;
+}
 .imageBox .arrowBox .right {
     position: absolute;
     right: 10px;
 }
-
-.imageBox ul {
+.imageBox .arrowBox .right.disable {
+    display: none;
+}
+.imageBox .bulletBox {
+    display: flex;
+    position: absolute;
+    z-index: 444;
+    width: 100%;
+    height: 100%;
+    align-items: end;
+    justify-content: center;
+}
+.imageBox .bulletBox ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+.imageBox .bulletBox li {
+    height: 100%;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 80px;
+}
+.imageBox .bulletBox .bullet {
+   color: white;
+}
+.imageBox .imgList {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
     width: 100%;
     height: 100%;
 }
-.imageBox li {
+.imageBox .imgList li {
     display: none;
     width: 100%;
     height: 100%;
     align-items: center;
     justify-content: center;
 }
-.imageBox img {
+.imageBox .imgList img {
     width: 100%;
     min-width: 350px;
     height: auto;
     max-height: 100%;
     object-fit: contain;
 }
-.imageBox li.display {
+.imageBox .imgList li.display {
     display: inline-flex;
 }
 .modalContainer .descriptionBox {

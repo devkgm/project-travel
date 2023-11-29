@@ -7,8 +7,38 @@ const modalContainer = document.getElementById("modalContainer");
 function modalOpen(e) {
     const modalContainer = document.getElementById("modalContainer");
     const index = e.getAttribute("index");
-
     const modalContent = document.getElementById("modal_item"+index);
+    const img = document.querySelectorAll("#modal_item"+index+" .imgList li");
+    const arrowRight = document.querySelector("#modal_item"+index+" .right");
+    const arrowLeft = document.querySelector("#modal_item"+index+" .left");
+    //이미지 위치에 따라 화살표 비활성화 및 활성화
+    arrowRight.addEventListener('click',()=>{
+        let imgIndex = getImageIndex(img);
+        if(imgIndex == img.length-1){
+            arrowRight.classList.add("disable");
+        } else {
+            arrowRight.classList.remove("disable");
+        }
+        if(imgIndex != 0){
+            arrowLeft.classList.remove("disable");
+        }
+    })
+    arrowLeft.addEventListener('click',()=>{
+        let imgIndex = getImageIndex(img);
+        if(imgIndex == 0){
+            arrowLeft.classList.add("disable");
+        } else {
+            arrowLeft.classList.remove("disable");
+        }
+        if(imgIndex < img.length-1){
+            arrowRight.classList.remove("disable");
+        }
+    })
+    arrowLeft.classList.add("disable");
+    if(img.length <= 1){
+        arrowRight.classList.add("disable");
+    }
+    //모달 open
     selectedItem = index;
     modalContent.style.display = "flex"
     modalContainer.style.display = "block";
@@ -57,7 +87,14 @@ function contentsLoad(contents){
             }
             return `<li><img src="${image}" alt="image"></li>`;
         })
+        const bulletArr = content.images.map((image, index) => {
+            if(index == 0){
+                return `<li class="bullet">.</li>`;
+            }
+            return `<li>.</li>`;
+        })
         const imageHTML = imageHTMLarr.join('')
+        const bullet = bulletArr.join('')
         modalContainer.innerHTML += `
         <div class="modalContent" id="modal_item${index}">
             
@@ -70,8 +107,12 @@ function contentsLoad(contents){
                         <
                     </div>
                 </div>
+                <div class="bulletBox">
+                    <ul class="bulletList">
+                        ${bullet}
+                    </ul>
+                </div>
                 <ul class="imgList">
-                    
                     ${imageHTML}                    
                 </ul>
             </div>
@@ -125,11 +166,20 @@ function handleSearch(){
 function handleBullet(e, dir) {
     const element = e.target;
     const index = element.getAttribute("index");
-    const images = document.querySelectorAll("#modal_item" + index + " li");
+    const images = document.querySelectorAll("#modal_item" + index + " .imgList li");
+    const bullet = document.querySelectorAll("#modal_item" + index + " .bulletList li");
     if(dir == "right"){
         handleRight(images);
     } else {
         handleLeft(images);
+    }
+    let imgIndex = getImageIndex(images)
+    for(let i = 0; i < bullet.length; i++){
+        if(i == imgIndex){
+            bullet[i].classList.add('bullet');
+        } else {
+            bullet[i].classList.remove('bullet');
+        }
     }
     
 }
@@ -153,7 +203,6 @@ function handleLeft(images) {
     images[index+1].classList.remove("display");
 }
 function handleRight(images) {
-    console.log(images)
     let index = getImageIndex(images)
     if(index == images.length-1) {
         return;
