@@ -168,6 +168,7 @@ function handleBullet(e, dir) {
     const index = element.getAttribute("index");
     const images = document.querySelectorAll("#modal_item" + index + " .imgList li");
     const bullet = document.querySelectorAll("#modal_item" + index + " .bulletList li");
+
     if(dir == "right"){
         handleRight(images);
     } else {

@@ -14,7 +14,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 300px;
     background-image: url(./images/bg.jpg);
     background-size: cover;
 }
@@ -183,28 +183,34 @@ section .itemCard img {
 .imageBox .arrowBox .arrow {
     text-align: center;
     color: rgb(140, 140, 140);
-    background-color: aliceblue;
+    background-color: rgba(250, 250, 250, 0.712);
     width: 30px;
     height: 30px;
+    font-weight: bold;
+    color: white;
     border-radius: 100%;
     line-height: 30px;
+    transition: all .1s;
+    box-shadow: 0px 0px 5px #9c9c9c
 }
 .imageBox .arrowBox .arrow:hover {
     cursor: pointer;
 }
 .imageBox .arrowBox .left {
     position: absolute;
-    left: 10px;
+    left: 30px;
 }
 .imageBox .arrowBox .left.disable {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
 .imageBox .arrowBox .right {
     position: absolute;
-    right: 10px;
+    right: 30px;
 }
 .imageBox .arrowBox .right.disable {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
 }
 .imageBox .bulletBox {
     display: flex;
@@ -226,9 +232,10 @@ section .itemCard img {
     width: 100%;
     color: rgba(255, 255, 255, 0.5);
     font-size: 80px;
+    transition: all .1s;
 }
 .imageBox .bulletBox .bullet {
-   color: white;
+    color: white;
 }
 .imageBox .imgList {
     list-style-type: none;
