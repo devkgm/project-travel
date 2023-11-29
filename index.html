@@ -4,32 +4,112 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <title>Travel</title>
     <style>
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
         body {
             width: 100%;
             height: 100%;
             min-width: 1000px;
+            margin: 0px;
+            
         }
 
         header {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 200px;
+            background-image: url(./images/bg.jpg);
+            background-size: cover;
+        }
+        header > * {
+            margin: 0px;
+            color: white;
         }
 
-        nav {}
-
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 720px;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        nav ol {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+            width: 200px;
+            height: 100%;
+            padding: 0px;
+            margin: 20px 0px;
+        }
+        nav li {
+            width: 100%;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+        }
+        nav button {
+            width: 80px;
+            height: 34px;
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            font-weight: bold;
+            color: black;
+        }
+        nav button.active {
+            background-color: rgb(61, 61, 61);
+            border-radius: 17px;
+            color: white;
+        }
+        nav button:hover{
+            cursor: pointer;
+        }
+        nav .searchBox {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            height: 50px;
+            border: none;
+            border-radius: 25px;
+            padding:0px 20px 0px 20px;
+            margin: 8px 0px 20px 0px;
+            background-color: rgba(215, 215, 215, 0.3);
+        }
+        nav .searchBox input {
+            border: none;
+            flex-grow: 1;
+            height: 100%;
+            padding-left: 10px;
+            background-color: rgba(215, 215, 215, 0);
+        }
+        nav .searchBox input:focus {
+            outline: none;
+        }
+        nav .searchBox a {
+            text-decoration: none;
+            color: black;
+        }
         section {
-            width: 800px;
+            width: fit-content;
             margin: auto;
         }
 
         section .itemContainer {
             display: flex;
-            justify-content: center;
+            justify-content: start;
             flex-wrap: wrap;
+            margin: 0px;
+            width: 762px;
         }
 
         section .itemCard {
@@ -38,9 +118,11 @@
             width: fit-content;
             height: fit-content;
         }
+ 
 
         section .itemCard .image {
             position: relative;
+            height: 250px;
         }
 
         section .itemCard .hover:hover {
@@ -155,6 +237,7 @@
         }
         .modalContainer .descriptionBox {
             width: 500px;
+            padding: 20px;
         }
         
 
@@ -168,16 +251,25 @@
 <body>
     <header>
         <h1>Travel</h1>
+        <h3>✈️여행 기록🔥</h3>
     </header>
     <nav>
         <ol>
-            <li>국내</li>
-            <li>해외</li>
-            <li>글쓰기</li>
+            <li><button id="localBtn" class="active" onclick="handleLocationChange(this);">국내</button></li>
+            <li><button id="globalBtn" onclick="handleLocationChange(this);">해외</button></li>
         </ol>
+        <div class="searchBox">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+            <input type="text" placeholder="어디든지 검색">
+            <span>
+                <a href="javascript:void(0);">search</a>
+            </span>
+        </div>
     </nav>
     <section>
-        <div id="itemContainer" class="itemContainer">
+        <div id="itemContainer" class="itemContainer local">
             <!-- 아래 해당하는 데이터가 DOM 로드시 스크립트로 입력됩니다. -->
             <!-- <div class="itemCard">
                 <a href="javascript:void(0)" onclick="callFunction(this);" id="item1">
@@ -189,6 +281,9 @@
                     </div>
                 </a>
             </div> -->
+        </div>
+        <div id="itemContainer" class="itemContainer local">
+        </div>
     </section>
     <footer></footer>
     <div class="modalContainer" id="modalContainer">
@@ -198,7 +293,7 @@
         </div> -->
     </div>
     <script>
-        const contents = [
+        const localContent = [
             {
                 thumnail : "https://i.pravatar.cc/300?img=2",
                 images : ["https://i.pravatar.cc/300?img=2​","https://i.pravatar.cc/300?img=1"],
@@ -229,32 +324,54 @@
             },
         
         ]
+        const globalContent = [
+            {
+                thumnail : "https://i.pravatar.cc/300?img=2",
+                images : ["https://i.pravatar.cc/300?img=2​","https://i.pravatar.cc/300?img=1"],
+                location : "대만",
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                date : "2023-10-22",
+            },
+            {
+                thumnail : "https://i.pravatar.cc/300?img=2",
+                images : ["https://i.pravatar.cc/300?img=2​"],
+                location : "대만",
+                description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                date : "2023-10-22",
+            },
+        
+        ]
         let selectedItem
         const modalContainer = document.getElementById("modalContainer");
-        function callFunction(e) {
+        function modalOpen(e) {
             const modalContainer = document.getElementById("modalContainer");
-            const index = e.getAttribute("index")
+            const index = e.getAttribute("index");
 
             const modalContent = document.getElementById("modal_item"+index);
-            selectedItem = index
+            selectedItem = index;
             modalContent.style.display = "flex"
             modalContainer.style.display = "block";
         }
+        //모달창 외부 클릭시 모달 close
         window.addEventListener("click", (event) => {
-
             if (event.target === modalContainer) {
                 modalContainer.style.display = "none";
                 const modalContent = document.getElementById("modal_item"+selectedItem);
-                modalContent.style.display = "none"
+                modalContent.style.display = "none";
             }
         });
+        //DOM 로드 완료시 컨텐츠 불러오기
         document.addEventListener("DOMContentLoaded", () => {
+            contentsLoad(localContent);
+        })
+        function contentsLoad(contents){
             const itemContainer = document.getElementById("itemContainer");
             const modalContainer = document.getElementById("modalContainer")
+            itemContainer.innerHTML = "";
             contents.map((content, index) => {
                 itemContainer.innerHTML += `
                 <div class="itemCard">
-                    <a href="javascript:void(0)" onclick="callFunction(this);" id="item${index}" index="${index}"">
+                    <a href="javascript:void(0)" onclick="modalOpen(this);" id="item${index}" index="${index}"">
                         <div class="image">
                             <div class="hover">
                                 <span class="location">${content.location}</span>
@@ -263,12 +380,12 @@
                         </div>
                     </a>
                 </div>
-                `
+                `;
                 const imageHTMLarr = content.images.map((image, index) => {
                     if(index == 0){
-                        return `<li class="display"><img src="${image}" alt="image"></li>`  
+                        return `<li class="display"><img src="${image}" alt="image"></li>`;
                     }
-                    return `<li><img src="${image}" alt="image"></li>`    
+                    return `<li><img src="${image}" alt="image"></li>`;
                 })
                 const imageHTML = imageHTMLarr.join('')
                 modalContainer.innerHTML += `
@@ -292,22 +409,38 @@
                             <span>${content.description}<span>
                     </div>
                 </div>
-                `
+                `;
             })
-        })
-        function handleBullet(e, dir) {
-            const element = e.target
-            const index = element.getAttribute("index")
-            const images = document.querySelectorAll("#modal_item" + index + " li")
-            if(dir == "right"){
-                handleRight(images)
+        }
+        //국내 해외 버튼 핸들러
+        function handleLocationChange(e){
+            const buttons = document.querySelectorAll("nav button");
+            if(e.id == "localBtn"){
+                buttons[1].classList.remove("active");
+                buttons[0].classList.add("active");
+                contentsLoad(localContent);
             } else {
-                handleLeft(images)
+                buttons[0].classList.remove("active");
+                buttons[1].classList.add("active");
+                contentsLoad(globalContent);
+
+            }
+        }
+        //모달 내부 이미지 핸들러
+        function handleBullet(e, dir) {
+            const element = e.target;
+            const index = element.getAttribute("index");
+            const images = document.querySelectorAll("#modal_item" + index + " li");
+            if(dir == "right"){
+                handleRight(images);
+            } else {
+                handleLeft(images);
             }
             
         }
+        //슬라이드 로직
         function getImageIndex(images) {
-            let index
+            let index;
             images.forEach((element,idx) => {
                 if(element.classList.contains("display")) {
                     return index = idx;
@@ -322,18 +455,16 @@
             }
             index--;
             images[index].classList.add("display");
-            images[index+1].classList.remove("display")
+            images[index+1].classList.remove("display");
         }
         function handleRight(images) {
             let index = getImageIndex(images)
             if(index == images.length-1) {
                 return;
             }
-            
-
             index++;
-            images[index].classList.add("display")
-            images[index-1].classList.remove("display")
+            images[index].classList.add("display");
+            images[index-1].classList.remove("display");
         }
 
             
