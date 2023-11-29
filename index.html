@@ -118,7 +118,9 @@
             width: fit-content;
             height: fit-content;
         }
- 
+        section .itemCard.disable {
+            display: none;
+        }
 
         section .itemCard .image {
             position: relative;
@@ -262,9 +264,9 @@
             <span class="material-symbols-outlined">
                 search
             </span>
-            <input type="text" placeholder="어디든지 검색">
+            <input id="inputLocation" type="text" placeholder="어디든지 검색" onkeyup="handleSearch();">
             <span>
-                <a href="javascript:void(0);">search</a>
+                <a href="javascript:void(0);" onclick="handleSearch();">search</a>
             </span>
         </div>
     </nav>
@@ -304,21 +306,21 @@
             {
                 thumnail : "https://i.pravatar.cc/300?img=2",
                 images : ["https://i.pravatar.cc/300?img=2​"],
-                location : "대만",
+                location : "중국",
                 description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 date : "2023-10-22",
             },
             {
                 thumnail : "https://i.pravatar.cc/300?img=2",
                 images : ["https://i.pravatar.cc/300?img=2​"],
-                location : "대만",
+                location : "제주도",
                 description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 date : "2023-10-22",
             },
             {
                 thumnail : "https://i.pravatar.cc/300?img=2",
                 images : ["https://i.pravatar.cc/300?img=2​"],
-                location : "대만",
+                location : "한국",
                 description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 date : "2023-10-22",
             },
@@ -425,6 +427,31 @@
                 contentsLoad(globalContent);
 
             }
+        }
+        //검색
+        function handleSearch(){
+            const inputLocation = document.getElementById("inputLocation").value.trim()
+            const location = document.getElementsByClassName('location');
+            const itemCard = document.getElementsByClassName('itemCard');
+            console.log(location);
+            if(inputLocation == ""){
+                for(let i = 0; i< itemCard.length; i++){
+                    itemCard[i].classList.remove('disable')
+                }
+            } else {
+                let removeCard = [];
+                for(let i = 0; i < location.length; i++){
+                    if(location[i].innerText.search(inputLocation)==-1){
+                        removeCard.push(itemCard[i])
+                    } else {
+                        itemCard[i].classList.remove('disable')
+                    }
+                }
+                for(let i = 0; i< removeCard.length; i++){
+                    removeCard[i].classList.add('disable')
+                }
+            }
+            
         }
         //모달 내부 이미지 핸들러
         function handleBullet(e, dir) {
