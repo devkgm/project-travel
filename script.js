@@ -106,8 +106,8 @@ function contentsLoad(contents){
             }
             return `<li>.</li>`;
         })
-        const imageHTML = imageHTMLarr.join('')
-        const bullet = bulletArr.join('')
+        const imageHTML = imageHTMLarr.join('');
+        const bullet = bulletArr.join('');
         modalContainer.innerHTML += `
         <div class="modalContent" id="modal_item${index}">
             
@@ -137,7 +137,7 @@ function contentsLoad(contents){
                     일정 : ${content.date}
                 </div>
                 <div class="description">
-                    <span style="font-style: italic;">여행 한 줄 소감</span> <br>
+                    <span style="font-style: italic;">한 줄 소감</span> <br>
                     ${content.description}
                 </div>
                 <div class="map">
@@ -173,7 +173,6 @@ function handleSearch(){
     const inputLocation = document.getElementById("inputLocation").value.trim();
     const location = document.getElementsByClassName('location');
     const itemCard = document.getElementsByClassName('itemCard');
-    console.log(location);
     if(inputLocation == ""){
         for(let i = 0; i< itemCard.length; i++){
             itemCard[i].classList.remove('disable');
@@ -225,7 +224,7 @@ function getImageIndex(images) {
     return index;
 }
 function handleLeft(images) {
-    let index = getImageIndex(images)
+    let index = getImageIndex(images);
     if(index == 0) {
         return;
     }
