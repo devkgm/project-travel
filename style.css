@@ -181,7 +181,7 @@ section .itemCard img {
     flex-grow: 1;
     position: relative;
     user-select: none;
-
+    width: 450px;
 }
 .imageBox .arrowBox {
     display: flex;

@@ -1,3 +1,4 @@
+let allContent = [];
 let localContent = [];
 let globalContent = [];
 let selectedItem;
@@ -57,15 +58,23 @@ window.addEventListener("click", (event) => {
 //DOM 로드 완료시 컨텐츠 불러오기
 document.addEventListener("DOMContentLoaded", () => {
     //로컬 컨텐츠 불러와서 바로 컨텐츠 로드
-    fetch('./localContents.json')
+    fetch('./Contents.json')
         .then(res => res.json())
-        .then(data => localContent = data)
-        .then(()=>contentsLoad(localContent));
-    //글로벌 컨텐츠 불러와서 데이터 저장
-    fetch('./globalContents.json')
-        .then(res => res.json())
-        .then(data => globalContent = data);
+        .then(data => allContent = data)
+        .then(()=>{
+            contentsLoad(allContent);
+            classificationContent(allContent);
+        });
 })
+function classificationContent(allContent){
+    allContent.forEach((content, index)=>{
+        if(content.country == "domestic"){
+            localContent.push(content);
+        } else {
+            globalContent.push(content);
+        }
+    })
+}
 //컨텐츠 로드 함수
 function contentsLoad(contents){
     const itemContainer = document.getElementById("itemContainer");
@@ -142,15 +151,21 @@ function contentsLoad(contents){
 //국내 해외 버튼 핸들러
 function handleLocationChange(e){
     const buttons = document.querySelectorAll("nav button");
-    if(e.id == "localBtn"){
-        buttons[1].classList.remove("active");
+    if(e.id == "allBtn"){
         buttons[0].classList.add("active");
+        buttons[1].classList.remove("active");
+        buttons[2].classList.remove("active");
+        contentsLoad(allContent);
+    } else if(e.id == "localBtn") {
+        buttons[0].classList.remove("active");
+        buttons[1].classList.add("active");
+        buttons[2].classList.remove("active");
         contentsLoad(localContent);
     } else {
         buttons[0].classList.remove("active");
-        buttons[1].classList.add("active");
+        buttons[1].classList.remove("active");
+        buttons[2].classList.add("active");
         contentsLoad(globalContent);
-
     }
 }
 //검색
