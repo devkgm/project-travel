@@ -103,8 +103,7 @@ section .itemContainer {
 section .itemCard {
     display: inline;
     margin: 2px;
-    width: fit-content;
-    height: fit-content;
+
 }
 section .itemCard.disable {
     display: none;
@@ -113,11 +112,10 @@ section .itemCard.disable {
 section .itemCard .image {
     position: relative;
     height: 250px;
+    overflow: hidden;
 }
 
-section .itemCard .hover:hover {
-    opacity: 100%;
-}
+
 
 section .itemCard .hover {
     display: flex;
@@ -130,6 +128,13 @@ section .itemCard .hover {
     width: 250px;
     height: 250px;
 }
+section .itemCard .hover:hover {
+    opacity: 100%;
+}
+section .itemCard .hover:hover ~ img{
+    transform: scale( 1.05 );
+}
+
 
 section .itemCard .hover span {
     color: white;
@@ -141,7 +146,10 @@ section .itemCard img {
     position: relative;
     width: 250px;
     height: 250px;
+    transition: all 0.2s linear;
+    z-index: -1;
 }
+
 
 .modalContainer {
     display: none;
