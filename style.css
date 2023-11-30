@@ -199,6 +199,7 @@ section .itemCard img {
     height: 30px;
     border-radius: 100%;
     line-height: 30px;
+    transition: 0.1s;
 }
 .imageBox .arrowBox .arrow:hover {
     cursor: pointer;
@@ -208,14 +209,14 @@ section .itemCard img {
     left: 10px;
 }
 .imageBox .arrowBox .left.disable {
-    display: none;
+    opacity: 0;
 }
 .imageBox .arrowBox .right {
     position: absolute;
     right: 10px;
 }
 .imageBox .arrowBox .right.disable {
-    display: none;
+    opacity: 0;
 }
 .imageBox .bulletBox {
     display: flex;
@@ -237,6 +238,7 @@ section .itemCard img {
     width: 100%;
     color: rgba(255, 255, 255, 0.5);
     font-size: 80px;
+    transition: 0.1s;
 }
 .imageBox .bulletBox .bullet {
    color: white;
