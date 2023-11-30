@@ -212,6 +212,7 @@ section .itemCard img {
 }
 .imageBox .arrowBox .left.disable {
     opacity: 0;
+    cursor: default;
 }
 .imageBox .arrowBox .right {
     position: absolute;
@@ -219,6 +220,7 @@ section .itemCard img {
 }
 .imageBox .arrowBox .right.disable {
     opacity: 0;
+    cursor: default;
 }
 .imageBox .bulletBox {
     display: flex;
