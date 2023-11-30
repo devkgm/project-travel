@@ -1,6 +1,6 @@
-let localContent = []
-let globalContent = []
-let selectedItem
+let localContent = [];
+let globalContent = [];
+let selectedItem;
 
 const modalContainer = document.getElementById("modalContainer");
 //모달 open
@@ -40,7 +40,7 @@ function modalOpen(e) {
     }
     //모달 open
     selectedItem = index;
-    modalContent.style.display = "flex"
+    modalContent.style.display = "flex";
     modalContainer.style.display = "block";
 }
 //모달창 외부 클릭시 모달 close
@@ -54,15 +54,16 @@ window.addEventListener("click", (event) => {
 //DOM 로드 완료시 컨텐츠 불러오기
 document.addEventListener("DOMContentLoaded", () => {
     //로컬 컨텐츠 불러와서 바로 컨텐츠 로드
-    fetch('./localContents.json')
+    fetch('../localContents.json')
         .then(res => res.json())
         .then(data => localContent = data)
         .then(()=>contentsLoad(localContent));
     //글로벌 컨텐츠 불러와서 데이터 저장
-    fetch('./globalContents.json')
+    fetch('../globalContents.json')
         .then(res => res.json())
-        .then(data => globalContent = data)
+        .then(data => globalContent = data);
 })
+//컨텐츠 로드 함수
 function contentsLoad(contents){
     const itemContainer = document.getElementById("itemContainer");
     const modalContainer = document.getElementById("modalContainer")
@@ -139,25 +140,25 @@ function handleLocationChange(e){
 }
 //검색
 function handleSearch(){
-    const inputLocation = document.getElementById("inputLocation").value.trim()
+    const inputLocation = document.getElementById("inputLocation").value.trim();
     const location = document.getElementsByClassName('location');
     const itemCard = document.getElementsByClassName('itemCard');
     console.log(location);
     if(inputLocation == ""){
         for(let i = 0; i< itemCard.length; i++){
-            itemCard[i].classList.remove('disable')
+            itemCard[i].classList.remove('disable');
         }
     } else {
         let removeCard = [];
         for(let i = 0; i < location.length; i++){
             if(location[i].innerText.search(inputLocation)==-1){
-                removeCard.push(itemCard[i])
+                removeCard.push(itemCard[i]);
             } else {
-                itemCard[i].classList.remove('disable')
+                itemCard[i].classList.remove('disable');
             }
         }
         for(let i = 0; i< removeCard.length; i++){
-            removeCard[i].classList.add('disable')
+            removeCard[i].classList.add('disable');
         }
     }
     
@@ -204,7 +205,7 @@ function handleLeft(images) {
     images[index+1].classList.remove("display");
 }
 function handleRight(images) {
-    let index = getImageIndex(images)
+    let index = getImageIndex(images);
     if(index == images.length-1) {
         return;
     }
