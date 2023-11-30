@@ -54,12 +54,12 @@ window.addEventListener("click", (event) => {
 //DOM 로드 완료시 컨텐츠 불러오기
 document.addEventListener("DOMContentLoaded", () => {
     //로컬 컨텐츠 불러와서 바로 컨텐츠 로드
-    fetch('../localContents.json')
+    fetch('./localContents.json')
         .then(res => res.json())
         .then(data => localContent = data)
         .then(()=>contentsLoad(localContent));
     //글로벌 컨텐츠 불러와서 데이터 저장
-    fetch('../globalContents.json')
+    fetch('./globalContents.json')
         .then(res => res.json())
         .then(data => globalContent = data);
 })
