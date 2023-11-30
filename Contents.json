@@ -6,7 +6,7 @@
         "location" : "강릉",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202009.0608598789!2d128.66224638955904!3d37.710485600962734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3561e5e1954f0f5b%3A0x80b7c6519c3d1d46!2z6rCV7JuQ64-EIOqwleumieyLnA!5e0!3m2!1sko!2skr!4v1701333431474!5m2!1sko!2skr",
         "title" : "2023 강릉 일출 구경⛱️",
-        "description" : "회가 맛도리",
+        "description" : "회 먹고싶다",
         "date" : "2023-10-28 ~ 2023-10-29"
     },
     {
@@ -16,7 +16,7 @@
         "location" : "대만",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747613.2338580214!2d117.43747784382711!3d23.46845120699749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ef3065c07572f%3A0xe711f004bf9c5469!2z64yA66eM!5e0!3m2!1sko!2skr!4v1701337301148!5m2!1sko!2skr",
         "title" : "2023 대만🈴",
-        "description" : "여자친구랑오면 좋겠다",
+        "description" : "또 가고 싶다",
         "date" : "2023-10-12 ~ 2023-10-16"
     },
     {
@@ -26,7 +26,7 @@
         "location" : "상하이",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747613.2338580214!2d117.43747784382711!3d23.46845120699749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b27040b1f53c33%3A0x295129423c364a1!2z7KSR6rWtIOyDge2VmOydtCDsi5wg7IOB7ZWY7J20!5e0!3m2!1sko!2skr!4v1701337834261!5m2!1sko!2skr",
         "title" : "여름 상하이🎡",
-        "description" : "너무 더워",
+        "description" : "너무 더웠다",
         "date" : "?"
     },
     {
@@ -36,7 +36,7 @@
         "location" : "한강",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101223.60927373855!2d126.89314670102948!3d37.549461053973275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9f3b03c4b7ef%3A0xa4d8869ebf8d452c!2z7Jes7J2Y64-E7ZWc6rCV6rO17JuQ!5e0!3m2!1sko!2skr!4v1701338101580!5m2!1sko!2skr",
         "title" : "한강 나드리🍺",
-        "description" : "한강 라면",
+        "description" : "한강 라면 먹고싶다",
         "date" : "2023-6-11"
     },
     {
@@ -56,7 +56,7 @@
         "location" : "징먼",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d109415.42974264956!2d112.12768949174414!3d31.019780241113885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3429ff7dc97f96a5%3A0x8b9362f55c2f8aa8!2z7KSR6rWtIO2bhOuyoOydtCDshLEg7KeV66i8IOyLnA!5e0!3m2!1sko!2skr!4v1701339085531!5m2!1sko!2skr",
         "title" : "주7일 노동자⏳",
-        "description" : "다신 가고싶지 않다",
+        "description" : "먹방",
         "date" : "2022 하반기 ~ 2023 상반기"
     },
     {
@@ -75,8 +75,8 @@
         "images" : ["./images/남경/1.jpg","./images/남경/2.jpg","./images/남경/3.jpg","./images/남경/4.jpg","./images/남경/5.jpg","./images/남경/6.jpg"],
         "location" : "남경",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d432625.1445630129!2d118.4074139918494!3d32.09942221200093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b58c9b668dcd83%3A0x8ffbb60b79df1b06!2z7KSR6rWtIOyepeyRpCDshLEg64Kc7KeVIOyLnA!5e0!3m2!1sko!2skr!4v1701340813172!5m2!1sko!2skr",
-        "title" : "공자의 가르침을 받자",
-        "description" : "난징~",
+        "title" : "공자의 가르침을 받으러",
+        "description" : "난징",
         "date" : "2021 9월 언저리"
     },
     {
