@@ -15,6 +15,7 @@ function modalOpen(e) {
     //이미지 위치에 따라 화살표 비활성화 및 활성화
     arrowRight.addEventListener('click',()=>{
         let imgIndex = getImageIndex(img);
+        console.log(imgIndex)
         if(imgIndex == img.length-1){
             arrowRight.classList.add("disable");
         } else {
@@ -25,7 +26,9 @@ function modalOpen(e) {
         }
     })
     arrowLeft.addEventListener('click',()=>{
-        let imgIndex = getImageIndex(img);
+        let imgIndex = getImageIndex(img)-1;
+        console.log(imgIndex)
+
         if(imgIndex == 0){
             arrowLeft.classList.add("disable");
         } else {
@@ -137,7 +140,6 @@ function contentsLoad(contents){
                     일정 : ${content.date}
                 </div>
                 <div class="description">
-                    <span style="font-style: italic;">한 줄 소감</span> <br>
                     ${content.description}
                 </div>
                 <div class="map">
@@ -203,7 +205,8 @@ function handleBullet(e, dir) {
     } else {
         handleLeft(images);
     }
-    let imgIndex = getImageIndex(images)
+    let imgIndex = getImageIndex(images);
+    if(dir == "left") imgIndex--;
     for(let i = 0; i < bullet.length; i++){
         if(i == imgIndex){
             bullet[i].classList.add('bullet');
@@ -230,7 +233,15 @@ function handleLeft(images) {
     }
     index--;
     images[index].classList.add("display");
-    images[index+1].classList.remove("display");
+    images[index+1].classList.add("slideright2");
+    images[index].classList.add("slideleft2");
+
+    setTimeout(()=>{
+        images[index+1].classList.remove("slideright2");
+        images[index].classList.remove("slideleft2");
+        images[index+1].classList.remove("display");
+
+    },400)
 }
 function handleRight(images) {
     let index = getImageIndex(images);
@@ -239,7 +250,15 @@ function handleRight(images) {
     }
     index++;
     images[index].classList.add("display");
-    images[index-1].classList.remove("display");
+    images[index-1].classList.add("slideleft1");
+    images[index].classList.add("slideright1");
+
+    setTimeout(() => {
+        
+        images[index-1].classList.remove("slideleft1");
+        images[index].classList.remove("slideright1"); 
+        images[index-1].classList.remove("display");
+    }, 400);
 }
 
     
