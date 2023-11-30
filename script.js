@@ -34,7 +34,10 @@ function modalOpen(e) {
             arrowRight.classList.remove("disable");
         }
     })
-    arrowLeft.classList.add("disable");
+    let imgIndex = getImageIndex(img);
+    if(imgIndex == 0){
+        arrowLeft.classList.add("disable");
+    }
     if(img.length <= 1){
         arrowRight.classList.add("disable");
     }
@@ -118,7 +121,19 @@ function contentsLoad(contents){
                 </ul>
             </div>
             <div class="descriptionBox">
-                    <span>${content.description}<span>
+                <div class="title">
+                    ${content.title}
+                </div>
+                <div class="duration">
+                    일정 : ${content.date}
+                </div>
+                <div class="description">
+                    <span style="font-style: italic;">여행 한 줄 소감</span> <br>
+                    ${content.description}
+                </div>
+                <div class="map">
+                <iframe src="${content.googlemap}" width="500" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
             </div>
         </div>
         `;
