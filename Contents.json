@@ -12,7 +12,7 @@
     {
         "country": "foreign",
         "thumnail" : "./images/대만/1.jpg",
-        "images" : ["./images/대만/1.jpg","./images/대만/2.jpg","./images/대만/3.jpg","./images/대만/4.jpg","./images/대만/5.jpg","./images/대만/6.jpg","./images/대만/7.jpg"],
+        "images" : ["./images/대만/1.jpg","./images/대만/2.jpg","./images/대만/3.jpg","./images/대만/5.jpg","./images/대만/6.jpg","./images/대만/7.jpg"],
         "location" : "대만",
         "googlemap" : "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3747613.2338580214!2d117.43747784382711!3d23.46845120699749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ef3065c07572f%3A0xe711f004bf9c5469!2z64yA66eM!5e0!3m2!1sko!2skr!4v1701337301148!5m2!1sko!2skr",
         "title" : "2023 대만🈴",
