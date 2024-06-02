@@ -1,6 +1,5 @@
 * {
-    font-family: 'Noto Sans KR', sans-serif;
-    
+    font-family: "Noto Sans KR", sans-serif;
 }
 body {
     width: 100%;
@@ -29,6 +28,7 @@ nav {
     flex-direction: column;
     align-items: center;
     width: 720px;
+    height: 170px;
     margin: auto;
     margin-bottom: 20px;
 }
@@ -60,17 +60,17 @@ nav button.active {
     border-radius: 17px;
     color: white;
 }
-nav button:hover{
+nav button:hover {
     cursor: pointer;
 }
 nav .searchBox {
     display: flex;
     align-items: center;
     width: 90%;
-    height: 50px;
+    height: 120px;
     border: none;
     border-radius: 25px;
-    padding:0px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
     margin: 8px 0px 20px 0px;
     background-color: rgba(215, 215, 215, 0.3);
 }
@@ -90,6 +90,8 @@ nav .searchBox a {
 }
 section {
     width: fit-content;
+    height: calc(100% - 200px - 170px);
+    min-height: calc(100vh - 200px - 170px - 100px);
     margin: auto;
 }
 
@@ -104,7 +106,6 @@ section .itemContainer {
 section .itemCard {
     display: inline;
     margin: 2px;
-
 }
 section .itemCard.disable {
     display: none;
@@ -115,8 +116,6 @@ section .itemCard .image {
     height: 250px;
     overflow: hidden;
 }
-
-
 
 section .itemCard .hover {
     display: flex;
@@ -132,10 +131,9 @@ section .itemCard .hover {
 section .itemCard .hover:hover {
     opacity: 100%;
 }
-section .itemCard .hover:hover ~ img{
-    transform: scale( 1.05 );
+section .itemCard .hover:hover ~ img {
+    transform: scale(1.05);
 }
-
 
 section .itemCard .hover span {
     color: white;
@@ -152,7 +150,6 @@ section .itemCard img {
     object-fit: cover;
 }
 
-
 .modalContainer {
     display: none;
     position: fixed;
@@ -167,7 +164,7 @@ section .itemCard img {
 .modalContent {
     /* display:flex */
     display: none;
-    position:absolute;
+    position: absolute;
     background-color: white;
     width: 80%;
     min-width: fit-content;
@@ -175,9 +172,9 @@ section .itemCard img {
     height: 90%;
     max-height: 600px;
     min-height: 550px;
-    top:50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 .modalContent .imageBox {
     flex-grow: 1;
@@ -246,7 +243,7 @@ section .itemCard img {
     transition: 0.1s;
 }
 .imageBox .bulletBox .bullet {
-   color: white;
+    color: white;
 }
 .imageBox .imgList {
     display: inline-flex;
@@ -264,7 +261,7 @@ section .itemCard img {
     height: 100%;
     align-items: center;
     justify-content: center;
-    flex-shrink:0;
+    flex-shrink: 0;
 }
 .imageBox .imgList img {
     width: auto;
@@ -277,20 +274,17 @@ section .itemCard img {
     display: inline-flex;
 }
 .imageBox .imgList li.slideleft1 {
-    animation: slideleft1 .4s ease forwards;
+    animation: slideleft1 0.4s ease forwards;
 }
 .imageBox .imgList li.slideright1 {
-    animation: slideright1 .4s ease forwards;
-
+    animation: slideright1 0.4s ease forwards;
 }
 .imageBox .imgList li.slideleft2 {
-    animation: slideleft2 .4s ease forwards;
-
+    animation: slideleft2 0.4s ease forwards;
 }
 .imageBox .imgList li.slideright2 {
-    animation: slideright2 .4s ease forwards;
+    animation: slideright2 0.4s ease forwards;
 }
-
 
 .modalContainer .descriptionBox {
     width: 500px;
@@ -320,43 +314,42 @@ footer {
     font-size: small;
     line-height: 10px;
     padding: 50px;
+    margin-top: 50px;
     text-align: center;
-    margin-top: 70%;
     background-color: #333333;
     height: 100px;
     color: white;
 }
 
-
-@keyframes slideleft1{
-    from{
-        left:0%;
+@keyframes slideleft1 {
+    from {
+        left: 0%;
     }
-    to{
-        left:-100%;
-    }
-}
-@keyframes slideright1{
-    from{
-        left:100%;
-    }
-    to{
-        left:0%;
+    to {
+        left: -100%;
     }
 }
-@keyframes slideleft2{
-    from{
-        left:-100%;
+@keyframes slideright1 {
+    from {
+        left: 100%;
     }
-    to{
-        left:0%;
+    to {
+        left: 0%;
     }
 }
-@keyframes slideright2{
-    from{
-        left:0%;
+@keyframes slideleft2 {
+    from {
+        left: -100%;
     }
-    to{
-        left:100%;
+    to {
+        left: 0%;
+    }
+}
+@keyframes slideright2 {
+    from {
+        left: 0%;
+    }
+    to {
+        left: 100%;
     }
 }
